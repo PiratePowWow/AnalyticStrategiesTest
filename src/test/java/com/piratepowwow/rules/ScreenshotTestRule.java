@@ -3,22 +3,18 @@ package com.piratepowwow.rules;
 import org.junit.rules.MethodRule;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.Statement;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileOutputStream;
+
 import java.io.IOException;
 
 /**
  * Created by Jame on 5/20/2016.
  */
 public class ScreenshotTestRule implements MethodRule {
-    private WebDriver driver;
 
     public Statement apply(final Statement statement, final FrameworkMethod frameworkMethod, final Object o) {
         return new Statement() {
@@ -32,7 +28,7 @@ public class ScreenshotTestRule implements MethodRule {
                 }
             }
 
-            public void captureScreenshot(String fileName) throws AWTException, IOException {
+            void captureScreenshot(String fileName) throws AWTException, IOException {
                 try {
                     new File("C:/screenshots").mkdirs(); // Insure directory is there
                     Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
@@ -45,7 +41,6 @@ public class ScreenshotTestRule implements MethodRule {
         };
     }
 
-    public ScreenshotTestRule(WebDriver driver) {
-        this.driver = driver;
+    public ScreenshotTestRule() {
     }
 }

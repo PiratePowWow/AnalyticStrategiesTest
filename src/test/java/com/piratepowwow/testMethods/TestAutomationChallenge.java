@@ -67,7 +67,7 @@ public class TestAutomationChallenge {
      * Step 8
      */
     @Rule
-    public ScreenshotTestRule screenshotTestRule = new ScreenshotTestRule(driver);
+    public ScreenshotTestRule screenshotTestRule = new ScreenshotTestRule();
 
     private void waitForLoad(WebDriver driver) {
         new WebDriverWait(driver, 10).until((ExpectedCondition<Boolean>) wd ->
